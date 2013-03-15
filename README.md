@@ -30,8 +30,8 @@ EM.run {
 ```
 
 Assuming that interval was 900 (15 minutes) and offset was 30, do_something will be called
-at the next aligned 15 minute interval.  So if you started your program at 10:07am, it would
-be called at 10:15, then at 10:30, 10:45 and so on.
+at the next aligned 15 minute interval.  So if you started your program at 10:07:06, it would
+be called at 10:15:30, then at 10:30:30, 10:45:30 and so on.
 
 Clock resolution and EventMachine latency means that the proc is usually kicked off tens or
 hundreds of microseconds after the interval.
