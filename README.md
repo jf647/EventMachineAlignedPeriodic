@@ -17,6 +17,13 @@ periodic = EventMachine::AlignedPeriodic.new(interval, proc {
       |partial| do_something(partial)
 }, offset)
 
+def do_something(partial)
+    puts "Yay! I just did something"
+    if partial
+        puts "... but only partially"
+    end
+end
+
 EM.run {
     periodic.runner.go
 }
