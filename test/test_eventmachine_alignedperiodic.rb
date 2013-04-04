@@ -1,3 +1,4 @@
+
 require 'test/unit'
 require 'eventmachine_alignedperiodic'
 
