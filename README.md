@@ -25,7 +25,10 @@ def do_something(partial)
 end
 
 EM.run {
-    periodic.runner.go
+    periodic.start
+    puts "next event is at #{periodic.nextevent}"
+    periodic.poke
+    periodic.stop
 }
 ```
 
