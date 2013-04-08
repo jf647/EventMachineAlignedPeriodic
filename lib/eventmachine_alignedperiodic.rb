@@ -49,12 +49,14 @@ module EventMachine
         private
 
         def do_periodic
-            # we can't remove shutdown hooks, so if we aren't running, do nothing
-            return unless @running
-            @p.call(@partial)
-            @partial = false if @partial
-            @lastevent = @nextevent
-            schedule_next_event
+            @mutex.synchronize {
+                # we can't remove shutdown hooks, so if we aren't running, do nothing
+                return unless @running
+                @p.call(@partial)
+                @partial = false if @partial
+                @lastevent = @nextevent
+                schedule_next_event
+            }
         end
         
         def schedule_first_event
