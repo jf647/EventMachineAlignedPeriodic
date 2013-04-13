@@ -8,10 +8,11 @@ module EventMachine
     
         attr_reader :nextevent
 
-        def initialize(interval, p, offset = 0)
+        def initialize(interval, p, offset = 0, logger = nil)
             @interval = interval
             @offset = offset
             @p = p
+            @logger = logger
             @partial = true
             @running = false
             @mutex = Mutex.new
@@ -47,15 +48,24 @@ module EventMachine
         end
         
         private
-
+        
         def do_periodic
             @mutex.synchronize {
                 # we can't remove shutdown hooks, so if we aren't running, do nothing
                 return unless @running
-                @p.call(@partial)
+                begin
+                    @p.call(@partial)
+                rescue => e
+                    if ! @logger.nil?
+                        @logger.debug("exception in do_periodic: #{e}")
+                    end
+                end
                 @partial = false if @partial
                 @lastevent = @nextevent
                 schedule_next_event
+                if ! @logger.nil?
+                    @logger.debug("next event is at @nextevent")
+                end
             }
         end
         

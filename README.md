@@ -12,10 +12,14 @@ Synopsis
 ```ruby
 require 'eventmachine'
 require 'eventmachine_alignedperiodic'
+require 'logger'
+
+log = Logger.new(STDOUT)
+log.level = Logger::DEBUG
 
 periodic = EventMachine::AlignedPeriodic.new(interval, proc {
       |partial| do_something(partial)
-}, offset)
+}, offset, log)
 
 def do_something(partial)
     puts "Yay! I just did something"

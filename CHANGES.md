@@ -1,10 +1,15 @@
 eventmachine_alignedperiodic Change Log
 =======================================
 
+2.1.0 (April 13 2013)
+---------------------
+
+* add a fourth arg to the constructor, an optional logger that must respond to #debug.  If provided, it logs exceptions in the periodic scheduler and the time of the next event after scheduling
+
 2.0.1 (April 7 2013)
 --------------------
 
-- use thread mutex in periodic caller as well
+* use thread mutex in periodic caller as well
 
 2.0.0 (April 4 2013)
 --------------------
@@ -20,4 +25,4 @@ eventmachine_alignedperiodic Change Log
 1.0.0 (March 15 2013)
 ---------------------
 
-- initial version released on Github
+* initial version released on Github
