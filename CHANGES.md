@@ -1,6 +1,11 @@
 eventmachine_alignedperiodic Change Log
 =======================================
 
+2.1.1 (April 13 2013)
+---------------------
+
+* forgot to interpolate a token in a log message
+
 2.1.0 (April 13 2013)
 ---------------------
 

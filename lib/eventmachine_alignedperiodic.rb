@@ -63,9 +63,6 @@ module EventMachine
                 @partial = false if @partial
                 @lastevent = @nextevent
                 schedule_next_event
-                if ! @logger.nil?
-                    @logger.debug("next event is at @nextevent")
-                end
             }
         end
         
@@ -87,6 +84,9 @@ module EventMachine
         end
         
         def schedule
+            if ! @logger.nil?
+                @logger.debug("next event is at #{@nextevent}")
+            end
             nextevent_in = @nextevent - Time.now
             @timer = EventMachine.add_timer(nextevent_in) { do_periodic() }
         end

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name = 'eventmachine_alignedperiodic'
-    s.version = '2.1.0'
+    s.version = '2.1.1'
     s.date = '2013-04-13'
     s.summary = 'EVMA Aligned Periodic Task Runner'
     s.description = 'a periodic event runner for eventmachine that aligns to an interval'
