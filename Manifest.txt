@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+LICENSE.txt
+Rakefile
+lib/eventmachine_alignedperiodic.rb
+eventmachinealignedperiodic.gemspec
