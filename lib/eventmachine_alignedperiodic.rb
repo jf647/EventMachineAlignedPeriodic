@@ -4,9 +4,9 @@ require 'thread'
 
 module EventMachine
 
-    VERSION = '2.1.1'
-
     class AlignedPeriodic
+
+        VERSION = '2.1.1'
     
         attr_reader :nextevent
 
