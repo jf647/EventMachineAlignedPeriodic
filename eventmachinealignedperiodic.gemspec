@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "EventMachineAlignedPeriodic helps to kick off a block of code on a periodic\nschedule aligned with a time period.  Rather than have something starting at\n2 seconds, 17 seconds, 32 seconds and so on you can have it consistently\nlaunch at 0, 15, 30."
   s.email = ["james@nadt.net"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt", "LICENSE.txt"]
-  s.files = ["History.txt", "Manifest.txt", "README.txt", "LICENSE.txt", "Rakefile", "lib/eventmachine_alignedperiodic.rb", "eventmachinealignedperiodic.gemspec", "test/test_eventmachine_alignedperiodic.rb", ".gemtest"]
+  s.files = ["History.txt", "Manifest.txt", "README.txt", "LICENSE.txt", "Rakefile", "lib/eventmachine_alignedperiodic.rb", "eventmachinealignedperiodic.gemspec", "test/test_eventmachine_alignedperiodic.rb" ]
   s.homepage = "https://github.com/jf647/EventMachineAlignedPeriodic"
   s.licenses = ["MIT"]
   s.rdoc_options = ["--main", "README.txt"]
