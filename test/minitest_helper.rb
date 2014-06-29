@@ -1,15 +1,16 @@
-require 'simplecov'
-require 'simplecov-console'
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-    SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Console,
-]
-SimpleCov.start do
-    add_filter '/vendor/'
-    add_filter '/test/'
+if ENV['COVERAGE']
+    require 'simplecov'
+    SimpleCov.start do
+        add_filter 'vendor'
+        add_filter 'test'
+    end
 end
 
 require 'minitest/autorun'
-require 'minitest/debugger' if ENV['DEBUG']
+require 'minitest/unit'
+if ENV['CI']
+    require 'minitest/reporters'
+    Minitest::Reporters.use! Minitest::Reporters::JUnitReporter.new
+end
+
 require 'eventmachine_alignedperiodic'
