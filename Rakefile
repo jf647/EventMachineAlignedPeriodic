@@ -14,9 +14,8 @@ Hoe.spec 'eventmachinealignedperiodic' do
     dependency 'hoe-bundler', '~> 1.2.0', :dev
     dependency 'hoe-yard', '~> 0.1.2', :dev
     dependency 'simplecov', '~> 0.7.1', :dev
-    dependency 'simplecov-console', '~> 0.1.1', :dev
+    dependency 'simplecov-rcov', '~> 0.2.3', :dev
     dependency 'minitest', '~> 5.0.8', :dev
-    dependency 'minitest-debugger', '~> 1.0.2', :dev
     dependency 'minitest-reporters', '~> 1.0.4', :dev
 end
 
