@@ -1,4 +1,5 @@
 require 'rake/testtask'
+require 'rubocop/rake_task'
 require 'hoe'
 
 Hoe.plugin :gemspec
@@ -17,6 +18,7 @@ Hoe.spec 'eventmachinealignedperiodic' do
     dependency 'simplecov-rcov', '~> 0.2.3', :dev
     dependency 'minitest', '~> 5.0.8', :dev
     dependency 'minitest-reporters', '~> 1.0.4', :dev
+    dependency 'rubocop', '~> 0.24.1', :dev
 end
 
 task :package => [ 'gem:spec', 'bundler:gemfile' ]
@@ -28,7 +30,6 @@ task :coverage_env do
     ENV['COVERAGE'] = 'true'
 end
 
-desc "Run basic tests"
 Rake::TestTask.new("test") { |t|
     t.libs.push 'lib'
     t.libs.push 'test'
@@ -36,3 +37,9 @@ Rake::TestTask.new("test") { |t|
     t.verbose = true
     t.warning = false
 }
+
+RuboCop::RakeTask.new(:style) do |task|
+    if ENV['CI_BUILD']
+        task.fail_on_error = true
+    end
+end

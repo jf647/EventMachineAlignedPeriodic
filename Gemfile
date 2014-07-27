@@ -14,5 +14,5 @@ gem "simplecov", "~>0.7.1", :group => [:development, :test]
 gem "simplecov-rcov", "~>0.2.3", :group => [:development, :test]
 gem "minitest", "~>5.0.8", :group => [:development, :test]
 gem "minitest-reporters", "~>1.0.4", :group => [:development, :test]
-
+gem "rubocop", :group => [:development, :test]
 # vim: syntax=ruby
