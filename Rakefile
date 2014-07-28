@@ -5,6 +5,7 @@ require 'hoe'
 Hoe.plugin :gemspec
 Hoe.plugin :bundler
 Hoe.plugin :yard
+Hoe.plugin :flog
 
 Hoe.spec 'eventmachinealignedperiodic' do
     developer("James FitzGibbon", "james@nadt.net")
@@ -19,6 +20,7 @@ Hoe.spec 'eventmachinealignedperiodic' do
     dependency 'minitest', '~> 5.0.8', :dev
     dependency 'minitest-reporters', '~> 1.0.4', :dev
     dependency 'rubocop', '~> 0.24.1', :dev
+    dependency 'flog', '~> 4.3.0', :dev
 end
 
 task :package => [ 'gem:spec', 'bundler:gemfile' ]
