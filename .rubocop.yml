@@ -1,2 +1,5 @@
-Style/IndentationWidth:
-    Enabled: false
+Style/LineLength:
+    Max: 100
+
+Style/MethodLength:
+  Max: 20
