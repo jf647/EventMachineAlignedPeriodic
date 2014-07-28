@@ -5,7 +5,7 @@ require 'hoe'
 Hoe.plugin :gemspec
 Hoe.plugin :bundler
 Hoe.plugin :yard
-Hoe.plugin :flog
+Hoe.plugins.delete :flog
 
 Hoe.spec 'eventmachinealignedperiodic' do
     developer("James FitzGibbon", "james@nadt.net")
@@ -44,4 +44,9 @@ RuboCop::RakeTask.new(:style) do |task|
     if ENV['CI_BUILD']
         task.fail_on_error = true
     end
+end
+
+require 'flog_task'
+FlogTask.new('flog', 200, %w(lib)) do |task|
+    task.verbose = true
 end
