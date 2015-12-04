@@ -6,8 +6,8 @@ module EventMachine
 
     class AlignedPeriodic
 
-        VERSION = '2.1.1'
-    
+        VERSION = '2.1.2'
+
         attr_reader :nextevent
 
         def initialize(interval, p, offset = 0, logger = nil)
@@ -40,17 +40,21 @@ module EventMachine
                 schedule_next_event
             }
         end
-        
+
         def stop
-            @mutex.synchronize {
-                EventMachine.cancel_timer(@timer)
-                @running = false
-                @p.call(true)
-            }
+            #Changed as per https://github.com/eventmachine/eventmachine/issues/418
+            if EM.reactor_running?
+              EM.add_timer(0) {
+                  EventMachine.cancel_timer(@timer) if !@timer.nil?
+              }
+            end
+            @running = false
+            @timer = nil
+            @p.call(true)
         end
-        
+
         private
-        
+
         def do_periodic
             @mutex.synchronize {
                 # we can't remove shutdown hooks, so if we aren't running, do nothing
@@ -67,7 +71,7 @@ module EventMachine
                 schedule_next_event
             }
         end
-        
+
         def schedule_first_event
             now = Time.now
             if @lastevent.nil?
@@ -79,12 +83,12 @@ module EventMachine
             @nextevent = @lastevent + @interval
             schedule
         end
-        
+
         def schedule_next_event
             @nextevent = @lastevent + @interval
             schedule
         end
-        
+
         def schedule
             if ! @logger.nil?
                 @logger.debug("next event is at #{@nextevent}")
@@ -92,7 +96,7 @@ module EventMachine
             nextevent_in = @nextevent - Time.now
             @timer = EventMachine.add_timer(nextevent_in) { do_periodic() }
         end
-    
+
     end
 
 end
