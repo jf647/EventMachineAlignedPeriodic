@@ -6,6 +6,7 @@ Hoe.plugin :bundler
 
 Hoe.spec 'eventmachinealignedperiodic' do
     developer("James FitzGibbon", "james@nadt.net")
+    developer("Gregory Hill", "gregoryhilluk@gmail.com")
     license "MIT"
     dependency 'eventmachine', '~> 1.0.3'
     dependency 'hoe', '~> 3.7.1', :dev
